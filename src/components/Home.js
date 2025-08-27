@@ -16,9 +16,9 @@ function Home() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
-              
-              <li className="nav-item"><Link className="nav-link" to="/Reservation">Reservation</Link></li>
-              <li className="nav-item"><Link className="nav-link" to="/About">About</Link></li>
+              <li className="nav-item"><Link className="nav-link" to="/reservation">Reservation</Link></li>
+              <li className="nav-item"><Link className="nav-link" to="/about">About</Link></li>
+              <li className="nav-item"><Link className="nav-link" to="/users">Users</Link></li> {/* Added UserList link */}
             </ul>
           </div>
         </div>
@@ -35,15 +35,11 @@ function Home() {
           <Link to="/reservation" className="btn btn-warning btn-lg">Reserve Now</Link>
         </div>
       </header>
-<footer className="text-center mt-5 bg-dark text-light p-3">
-  Developed by LOKI | 2025
-</footer>
 
-     
-
-
-</div>
-
+      <footer className="text-center mt-5 bg-dark text-light p-3">
+        Developed by LOKI | 2025
+      </footer>
+    </div>
   );
 }
 
