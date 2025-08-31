@@ -57,17 +57,26 @@ function UserList() {
   const handleUpdate = async () => {
     if (!userToEdit) return;
     try {
-      const userRef = doc(db, "users", userToEdit.id);
-      await updateDoc(userRef, formData);
-      setUsers((prev) =>
-        prev.map((u) => (u.id === userToEdit.id ? { ...u, ...formData } : u))
-      );
-      setShowEditModal(false);
-      setUserToEdit(null);
-    } catch (err) {
-      console.error("Update error:", err);
-      alert("Error updating user");
-    }
+  const userRef = doc(db, "users", userToEdit.id);
+
+  // 🔹 force guests to be number
+  const payload = { 
+    ...formData, 
+    guests: Number(formData.guests) 
+  };
+
+  await updateDoc(userRef, payload);
+
+  setUsers((prev) =>
+    prev.map((u) => (u.id === userToEdit.id ? { ...u, ...payload } : u))
+  );
+  setShowEditModal(false);
+  setUserToEdit(null);
+} catch (err) {
+  console.error("Update error:", err);
+  alert("Error updating user");
+}
+
   };
 
   // ---- Styles ----

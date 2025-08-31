@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { db } from "../firebase";
-import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
+import { collection, addDoc, query, where, getDocs, serverTimestamp} from "firebase/firestore";
 
 function Reservation() {
   const [name, setName] = useState("");
@@ -64,13 +64,14 @@ function Reservation() {
 
       // Add reservation
       await addDoc(reservationsRef, {
-        name,
-        email,
-        phone,
-        date,
-        guests: Number(guests),
-        timestamp: new Date(),
-      });
+  name,
+  email,
+  phone,
+  date,
+  guests: Number(guests),
+  timestamp: serverTimestamp(),
+});
+
 
       setSuccess(true);
 
